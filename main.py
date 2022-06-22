@@ -48,19 +48,19 @@ async def startprivate(client, message):
     joinButton = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton("CHANNEL", url="https://t.me/nacbots"),
+                InlineKeyboardButton("CHANNEL", url="https://t.me/PokeTide"),
                 InlineKeyboardButton(
-                    "SUPPORT GROUP", url="https://t.me/n_a_c_bot_developers"
+                    "SUPPORT GROUP", url="https://t.me/Pokemon_Group_Telegram"
                 ),
             ]
         ]
     )
-    welcomed = f"Hey <b>{message.from_user.first_name}</b>\nI'm a simple Telegram bot that can broadcast messages and media to the bot subscribers. Made by @NACBOTS.\n\n 🎚 use /settings"
+    welcomed = f"Hey <b>{message.from_user.first_name}</b>\n This is the broadcast menu of this bot available for any admin.\n Made by 💠 @PokeTide 💠\n\n 🎚 use /start"
     await message.reply_text(welcomed, reply_markup=joinButton)
     raise StopPropagation
 
 
-@Bot.on_message(filters.command("settings"))
+@Bot.on_message(filters.command("settings_broadcast"))
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     await cmd.reply_text(
@@ -102,14 +102,14 @@ async def sts(c, m):
     )
 
 
-@Bot.on_message(filters.private & filters.command("ban_user"))
+@Bot.on_message(filters.private & filters.command("ban"))
 async def ban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
         return
     if len(m.command) == 1:
         await m.reply_text(
-            f"Use this command to ban 🛑 any user from the bot 🤖.\n\nUsage:\n\n`/ban_user user_id ban_duration ban_reason`\n\nEg: `/ban_user 1234567 28 You misused me.`\n This will ban user with id `1234567` for `28` days for the reason `You misused me`.",
+            f"Use this command to ban 🛑 any user from the bot 🤖.\n\nUsage:\n\n`/ban user_id ban_duration ban_reason`\n\nEg: `/ban 1234567 28 You misused me.`\n This will ban user with id `1234567` for `28` days for the reason `You misused me`.",
             quote=True,
         )
         return
@@ -142,14 +142,14 @@ async def ban(c, m):
         )
 
 
-@Bot.on_message(filters.private & filters.command("unban_user"))
+@Bot.on_message(filters.private & filters.command("unban"))
 async def unban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
         return
     if len(m.command) == 1:
         await m.reply_text(
-            f"Use this command to unban 😃 any user.\n\nUsage:\n\n`/unban_user user_id`\n\nEg: `/unban_user 1234567`\n This will unban user with id `1234567`.",
+            f"Use this command to unban 😃 any user.\n\nUsage:\n\n`/unban user_id`\n\nEg: `/unban 1234567`\n This will unban user with id `1234567`.",
             quote=True,
         )
         return
