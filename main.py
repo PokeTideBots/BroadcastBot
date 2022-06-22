@@ -55,7 +55,7 @@ async def startprivate(client, message):
             ]
         ]
     )
-    welcomed = f"Hey <b>{message.from_user.first_name}</b>\n This is the broadcast menu of this bot available for any admin.\n Made by 💠 @PokeTide 💠\n\n 🎚 use /start"
+    welcomed = f"Hey <b>{message.from_user.first_name}</b>\nThis is the broadcast menu of this bot available for only admin.\nMade by 💠 @PokeTide 💠\n\n 🎚 use /start"
     await message.reply_text(welcomed, reply_markup=joinButton)
     raise StopPropagation
 
