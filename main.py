@@ -30,7 +30,7 @@ Bot = Client(
 async def _(bot, cmd):
     await handle_user_status(bot, cmd)
 
-@Bot.on_message(filters.command("start") & filters.private)
+@Bot.on_message(filters.command("start_broadcast") & filters.private)
 async def startprivate(client, message):
     # return
     chat_id = message.from_user.id
